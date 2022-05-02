@@ -30,11 +30,11 @@ function autoconda --on-variable PWD --description "Automatic activation conda e
 		end
 
 		if test -z "$_dir" # Not an child
-			conda deactivate
 			if test -n "$_source" # Found environment.yaml
 				__autoconda_activate_from_file "$_source"
 			else
-				echo "Not found any environment.yaml, deactivated"
+				echo "Not found any environment.yaml, deactivating"
+				conda deactivate
 				set -e __autoconda_new
 				set -e __autoconda_old
 			end
